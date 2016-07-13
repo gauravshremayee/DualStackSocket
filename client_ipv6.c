@@ -26,13 +26,12 @@ int main(int argc, char *argv[]) {
     }
     portno = atoi(argv[2]);
 
-    printf("\nIPv6 TCP Client Started...\n");
+   
     
     
     //Sockets Layer Call: gethostbyname2()
     server_ipv6 = gethostbyname2(argv[1],AF_INET6);
 	server_ipv4 = gethostbyname(argv[1]);
-    printf("\nserver1 is % s and server2 is %s\n",server_ipv6, server_ipv4);
      if (server_ipv6 == NULL && server_ipv4 == NULL ) {       
         fprintf(stderr, "ERROR, no such ipv4 host\n");
         exit(0);
@@ -41,7 +40,7 @@ int main(int argc, char *argv[]) {
 	
 	//Create Socket for ipv6
     if ( server_ipv6 != NULL){
-	
+	    printf("\nTCP  IPv6 Client Started...\n");
 	   sockfd = socket(AF_INET6, SOCK_STREAM, 0);
        if (sockfd < 0)
         error("ERROR opening socket");
@@ -54,7 +53,8 @@ int main(int argc, char *argv[]) {
    }
    //Create Socket for ipv4
    else if (server_ipv4 !=NULL) {
-   
+   	    printf("\nTCP  IPv4 Client Started...\n");
+
     sockfd = socket(AF_INET, SOCK_STREAM, 0);
        if (sockfd < 0)
            error("ERROR opening socket");
